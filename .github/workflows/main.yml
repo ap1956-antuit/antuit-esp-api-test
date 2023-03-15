@@ -31,7 +31,7 @@ jobs:
         uses: QAInsights/PerfAction@v3.1
         with:
     # jmeter test plan to execute
-          test-plan-path: './simple-test.jmx'
+          test-plan-path: './DP-Antuit-farkh.jmx'
     # Optional arguments. For more details https://jmeter.apache.org/usermanual/get-started.html#non_gui
     #args: # optional
       - name: Upload Results
