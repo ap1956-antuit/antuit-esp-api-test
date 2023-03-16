@@ -1,0 +1,34 @@
+name: run-perf-test
+
+on:
+  
+  push:
+    branches: [ "jmeter-test" ]
+  pull_request:
+    branches: [ "jmeter-test" ]
+
+ 
+  workflow_dispatch:
+
+
+jobs:
+  
+  build:
+  
+    runs-on: ubuntu-latest
+
+   
+    steps:
+       - uses: actions/checkout@v3
+
+       - name: JMeter Test
+         uses: QAInsights/PerfAction@v3.1
+         with:
+            test-plan-path: './simple-test.jmx'
+            args: "--loglevel INFO"
+            
+       - name: Upload Results
+         uses: actions/upload-artifact@v3
+         with:
+            name: jmeter-results
+            path: result.jtl
