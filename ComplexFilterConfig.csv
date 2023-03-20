@@ -1,0 +1,8 @@
+dimensionLevelColumnName,dimensionColumnName,columnName,dimColumnId,cmpOperator,startDate,endDate,,,,,,,,,,,,,,,,,,latest4_next4
+event,event,week,4011,IN,110000271,110000274,,,,,,,,,,,,,,,,,,
+ad_location,ad_location,week,128877249,IN,110000271,110000274,,,,,,,,,,,,,,,,,,
+segment,segment,week,1013230245,IN,110000271,110000274,,,,,,,,,,,,,,,,,,
+vendor,vendor,week,1012015225,IN,110000271,110000274,,,,,,,,,,,,,,,,,,
+season,season,week,1108602274,IN,110000271,110000274,,,,,,,,,,,,,,,,,,
+season_category,season,week,2038635799,IN,110000271,110000274,,,,,,,,,,,,,,,,,,
+time,time,week,,BETWEEN,110000271,110000274,,,,,,,,,,,,,,,,,,
