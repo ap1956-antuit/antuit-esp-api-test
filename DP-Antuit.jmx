@@ -18,7 +18,7 @@
     </TestPlan>
     <hashTree>
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="dpConfig.csv Config" enabled="true">
-        <stringProp name="filename">${filePath}dpConfig.csv</stringProp>
+        <stringProp name="filename">dpConfig.csv</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames">datasetID,workbookId,templateId,dpDatbase,db_username,isDbcheck,name_ip,BASE_URI,PATH,Protocol,applicationUrl</stringProp>
         <boolProp name="ignoreFirstLine">true</boolProp>
@@ -137,7 +137,7 @@
         </JDBCDataSource>
         <hashTree/>
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="userData.csv Config" enabled="true">
-          <stringProp name="filename">${filePath}userData.csv</stringProp>
+          <stringProp name="filename">userData.csv</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="variableNames">scenario_#,access_token,esp_user_token,measureColumnName, measureAggregationColumnName,measureAggregationType, measureColumnName_2, measureAggregationColumnName_2, measureAggregationType_2, measureAggregationColumnName_UPDATE, measureColumnName_UPDATE, measureAggregationColumnName_UPDATE_2, measureColumnName_UPDATE_2</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
@@ -150,7 +150,7 @@
         </CSVDataSet>
         <hashTree/>
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Dimensions.csv Config" enabled="true">
-          <stringProp name="filename">${filePath}Dimensions.csv</stringProp>
+          <stringProp name="filename">Dimensions.csv</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="variableNames">dimension_1, dimension_2, dimension_3, dimensionLevel_1, dimensionId_1</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
@@ -163,7 +163,7 @@
         </CSVDataSet>
         <hashTree/>
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="productData.csv Config" enabled="true">
-          <stringProp name="filename">${filePath}productData.csv</stringProp>
+          <stringProp name="filename">productData.csv</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="variableNames">dimLevelColName_1,dimLevelsId,dimLevelColName_2,dimColNameId</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
@@ -176,7 +176,7 @@
         </CSVDataSet>
         <hashTree/>
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="productCategories.csv Config" enabled="true">
-          <stringProp name="filename">${filePath}productCategories.csv</stringProp>
+          <stringProp name="filename">productCategories.csv</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="variableNames">product_category_id, alert_type_value, week_range</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
@@ -189,7 +189,7 @@
         </CSVDataSet>
         <hashTree/>
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="ScopeCreation.csv Config" enabled="true">
-          <stringProp name="filename">${filePath}ScopeCreation.csv</stringProp>
+          <stringProp name="filename">ScopeCreation.csv</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="variableNames">scope_name ,scope_name_update,dimensions,dimension_level_name,level_values,cmpOperator</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
@@ -3060,7 +3060,7 @@ query getCloneWorkbooks($query: DAQueryInput!) {
             </LoopController>
             <hashTree>
               <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="AlertTabGlobalFilters.csvConfig" enabled="true">
-                <stringProp name="filename">${filePath}AlertTabGlobalFilters.csv</stringProp>
+                <stringProp name="filename">AlertTabGlobalFilters.csv</stringProp>
                 <stringProp name="fileEncoding"></stringProp>
                 <stringProp name="variableNames">GlobalDimensionLevels,GlobalDimensionColumnName,GlobalDimensionLevelColumnName,GlobalCmpOperator,GlobaldimensionLevel_id,alert_type_id</stringProp>
                 <boolProp name="ignoreFirstLine">true</boolProp>
