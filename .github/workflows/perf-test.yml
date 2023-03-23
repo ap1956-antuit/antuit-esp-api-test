@@ -29,7 +29,7 @@ jobs:
        - name: JMeter Test
          uses: QAInsights/PerfAction@v3.1
          with:
-            test-plan-path: './DP-Antuit.jmx'
+            test-plan-path: './DP-Demo-QA.jmx'
             args: "--loglevel INFO"
             
        - name: Upload Results
