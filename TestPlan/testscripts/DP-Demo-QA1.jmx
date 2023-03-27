@@ -17,7 +17,7 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="dpConfig.csv Config" enabled="true">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="dpConfig.csv" enabled="true">
         <stringProp name="filename">dpConfig.csv</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames">datasetID,workbookId,templateId,dpDatbase,db_username,isDbcheck,name_ip,BASE_URI,PATH,Protocol,applicationUrl</stringProp>
