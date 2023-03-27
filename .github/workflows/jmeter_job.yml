@@ -10,7 +10,7 @@ jobs:
       - name: Run JMeter Tests
         uses: ./
         with:
-          test-plan-path: ./DP-Demo-QA1.jmx
+          test-plan-path: ./TestPlan/testscripts/DP-Demo-QA1.jmx
           args: ""
           
       - name: Upload Results
