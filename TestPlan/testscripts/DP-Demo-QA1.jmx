@@ -79,9 +79,9 @@
         </JDBCDataSource>
         <hashTree/>
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="userData.csv Config" enabled="true">
-          <stringProp name="filename">userData.csv</stringProp>
+          <stringProp name="filename">accessToken.csv</stringProp>
           <stringProp name="fileEncoding"></stringProp>
-          <stringProp name="variableNames">scenario_#,access_token,esp_user_token,measureColumnName, measureAggregationColumnName,measureAggregationType, measureColumnName_2, measureAggregationColumnName_2, measureAggregationType_2, measureAggregationColumnName_UPDATE, measureColumnName_UPDATE, measureAggregationColumnName_UPDATE_2, measureColumnName_UPDATE_2</stringProp>
+          <stringProp name="variableNames">access_token,esp_user_token</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
           <stringProp name="delimiter">,</stringProp>
           <boolProp name="quotedData">false</boolProp>
