@@ -1,4 +1,4 @@
-FROM ab: 1.1
+FROM alpine: 3.11
 
 LABEL Description="Apache JMeter Dockerfile for GitHub Actions with JMeter Plugins"
 
