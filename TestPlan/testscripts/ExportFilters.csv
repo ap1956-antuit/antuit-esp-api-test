@@ -1,0 +1,16 @@
+getSeasonCategoryDataDimensionLevels,getSeasonDataDimensionLevels,DimensionColumnName,ProductColumnNameFilter,CmpOperator,dimensionLevel_id,displayNames,Startdate_id,Enddate_id
+season_category,season,product,brand,IN,1113461055,3M',110000276,110000276
+season_category,season,product,private_brand,IN,2093049905,Y',110000276,110000276
+season_category,season,product,private_brand,IN,586152512,N',110000276,110000276
+season_category,season,product,merchandise_div,IN,50000006,00600',110000276,110000276
+season_category,season,product,opstudy,IN,40000061,006',110000276,110000276
+season_category,season,product,prod_cat,IN,30002553,006-003',110000276,110000276
+season_category,season,product,product,IN,20421812,40000100110',110000276,110000276
+season_category,season,location,region,IN,70000015,00001',110000276,110000276
+season_category,season,location,area,NOT_IN,80000070,002',110000276,110000276
+season_category,season,location,location,IN,60009104,00013',110000276,110000276
+season_category,season,location,dist_ctr,IN,140000003,88001',110000276,110000276
+season_category,season,location,mdg,IN,1535184500,045',110000276,110000276
+season_category,season,location,state,IN,843338343,AL',110000276,110000276
+season_category,season,location,exclude_billing,IN,128877249,B',110000276,110000276
+season_category,season,location,exclude_billing,IN,1792511324,S',110000276,110000276
