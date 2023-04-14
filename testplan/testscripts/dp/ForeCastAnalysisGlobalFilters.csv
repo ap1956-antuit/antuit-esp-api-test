@@ -1,0 +1,14 @@
+GlobalDimensionLevels,GlobalDimensionColumnName,GlobalDimensionLevelColumnName,GlobalCmpOperator,GlobalBrand_id,,,,,,,,,,,,,,,,,,,,,,latest4_next4
+opstudy,product,brand,IN,1113461055,,,,,,,,,,,,,,,,,,,,,,latest13_next13
+opstudy,product,private_brand,IN,586152512,,,,,,,,,,,,,,,,,,,,,,
+opstudy,product,product,IN,20421812,,,,,,,,,,,,,,,,,,,,,,
+opstudy,product,merchandise_div,IN,50000006,,,,,,,,,,,,,,,,,,,,,,
+opstudy,product,opstudy,IN,40000061,,,,,,,,,,,,,,,,,,,,,,
+opstudy,product,prod_cat,IN,30002553,,,,,,,,,,,,,,,,,,,,,,
+opstudy,location,region,IN,70000015,,,,,,,,,,,,,,,,,,,,,,
+opstudy,location,area,IN,80000070,,,,,,,,,,,,,,,,,,,,,,
+opstudy,location,location,IN,60009104,,,,,,,,,,,,,,,,,,,,,,
+opstudy,location,dist_ctr,IN,140000003,,,,,,,,,,,,,,,,,,,,,,
+opstudy,location,mdg,IN,973580262,,,,,,,,,,,,,,,,,,,,,,
+opstudy,location,state,IN,843338343,,,,,,,,,,,,,,,,,,,,,,
+opstudy,location,exclude_billing,IN,128877249,,,,,,,,,,,,,,,,,,,,,,
