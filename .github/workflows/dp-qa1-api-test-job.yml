@@ -1,4 +1,4 @@
-on: []
+on: [push]
 jobs:
   jmeter_job:
     runs-on: ubuntu-latest
