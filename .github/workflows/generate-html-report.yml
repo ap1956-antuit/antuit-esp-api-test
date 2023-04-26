@@ -51,4 +51,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: jmeter-results-HTML
-          path: index.html
+          path: ./testplan/testscripts/dp/test-reports/html/index.html
