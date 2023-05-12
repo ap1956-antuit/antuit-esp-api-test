@@ -1,4 +1,8 @@
-on: []
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 jobs:
   jmeter_job:
     runs-on: ubuntu-latest
