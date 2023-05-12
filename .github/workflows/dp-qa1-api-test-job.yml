@@ -1,8 +1,8 @@
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "jenkin-branch" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "jenkin-branch" ]
 jobs:
   jmeter_job:
     runs-on: ubuntu-latest
