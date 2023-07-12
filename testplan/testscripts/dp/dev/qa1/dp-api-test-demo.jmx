@@ -45,14 +45,14 @@
         <stringProp name="TestPlan.comments">This is a method where we can declare our variables and use in our tests, content-type is not necessary because it can be added in HTTP Header Manager</stringProp>
       </Arguments>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DP" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DP-QA" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">10</stringProp>
+        <stringProp name="ThreadGroup.num_threads">5</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">20</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -1318,7 +1318,7 @@
             <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller with Filters Applied" enabled="true">
               <boolProp name="LoopController.continue_forever">true</boolProp>
               <stringProp name="TestPlan.comments">Loop, for diffrent diemension levels &amp; deffrent permitation &amp; combination</stringProp>
-              <stringProp name="LoopController.loops">15</stringProp>
+              <stringProp name="LoopController.loops">5</stringProp>
             </LoopController>
             <hashTree>
               <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="FVAFilters.csv Config" enabled="true">
@@ -2660,27 +2660,36 @@
                 </DurationAssertion>
                 <hashTree/>
               </hashTree>
-              <IfController guiclass="IfControllerPanel" testclass="IfController" testname="isDbcheck true" enabled="true">
-                <stringProp name="IfController.condition">${__jexl3(&quot;${isDbcheck}&quot;== true)}</stringProp>
-                <boolProp name="IfController.evaluateAll">false</boolProp>
-                <boolProp name="IfController.useExpression">true</boolProp>
-              </IfController>
-              <hashTree>
-                <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
-                  <stringProp name="IfController.condition">${JMeterThread.last_sample_ok}</stringProp>
-                  <boolProp name="IfController.evaluateAll">false</boolProp>
-                  <boolProp name="IfController.useExpression">true</boolProp>
-                </IfController>
-                <hashTree>
-                  <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If cmpOperator &quot;NOT IN&quot; &amp; DimensionColumnName &quot;product&quot;" enabled="true">
-                    <stringProp name="IfController.condition">${__jexl3(&quot;${CmpOperator}&quot;==&quot;NOT_IN&quot; &amp;&amp; &quot;${DimensionColumnName}&quot;==&quot;product&quot;)}</stringProp>
-                    <boolProp name="IfController.evaluateAll">false</boolProp>
-                    <boolProp name="IfController.useExpression">true</boolProp>
-                  </IfController>
-                  <hashTree>
-                    <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="DB Query to fetch &apos;${ProductColumnNameFilter}&apos; product_data" enabled="true">
-                      <stringProp name="dataSource">connection</stringProp>
-                      <stringProp name="query">WITH t AS (
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="isDbcheck true" enabled="false">
+          <stringProp name="IfController.condition">${__jexl3(&quot;${isDbcheck}&quot;== true)}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
+            <stringProp name="IfController.condition">${JMeterThread.last_sample_ok}</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+            <boolProp name="IfController.useExpression">true</boolProp>
+          </IfController>
+          <hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If cmpOperator &quot;NOT IN&quot; &amp; DimensionColumnName &quot;product&quot;" enabled="true">
+              <stringProp name="IfController.condition">${__jexl3(&quot;${CmpOperator}&quot;==&quot;NOT_IN&quot; &amp;&amp; &quot;${DimensionColumnName}&quot;==&quot;product&quot;)}</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+              <boolProp name="IfController.useExpression">true</boolProp>
+            </IfController>
+            <hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="DB Query to fetch &apos;${ProductColumnNameFilter}&apos; product_data" enabled="true">
+                <stringProp name="dataSource">connection</stringProp>
+                <stringProp name="query">WITH t AS (
 SELECT
 	pdx.opstudy_id AS opstudy_id,
 	SUM(st_ty) AS sum_st_ty,
@@ -2736,41 +2745,41 @@ GROUP BY
 	count_of_overrides
 ORDER BY
 	opstudy_id</stringProp>
-                      <stringProp name="queryArguments"></stringProp>
-                      <stringProp name="queryArgumentsTypes"></stringProp>
-                      <stringProp name="queryTimeout"></stringProp>
-                      <stringProp name="queryType">Select Statement</stringProp>
-                      <stringProp name="resultSetHandler">Store as String</stringProp>
-                      <stringProp name="resultSetMaxRows"></stringProp>
-                      <stringProp name="resultVariable"></stringProp>
-                      <stringProp name="variableNames">opstudy_id,sum_st_ty,sum_st_ly,opstudy_name,opstudy_description,opstudy_external_id,st_yoy_perc_change,totalCount</stringProp>
-                      <stringProp name="TestPlan.comments">All variables passed to this query come from ${filePath}globalFilter.csv file. Changing variable in the file will change the value for ALL scripts that are using it.</stringProp>
-                    </JDBCSampler>
-                    <hashTree>
-                      <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate data row count in the database" enabled="true">
-                        <collectionProp name="Asserion.test_strings">
-                          <stringProp name="1890478328">${getProductrowCount}</stringProp>
-                        </collectionProp>
-                        <stringProp name="TestPlan.comments">validate if row count match in API response &amp; in the database</stringProp>
-                        <stringProp name="Assertion.custom_message">### Response data not match... ###</stringProp>
-                        <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                        <boolProp name="Assertion.assume_success">false</boolProp>
-                        <intProp name="Assertion.test_type">8</intProp>
-                        <stringProp name="Assertion.scope">variable</stringProp>
-                        <stringProp name="Scope.variable">totalCount_#</stringProp>
-                      </ResponseAssertion>
-                      <hashTree/>
-                    </hashTree>
-                  </hashTree>
-                  <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If cmpOperator &quot;IN&quot; &amp; DimensionColumnName &quot;product&quot;" enabled="true">
-                    <stringProp name="IfController.condition">${__jexl3(&quot;${CmpOperator}&quot;==&quot;IN&quot; &amp;&amp; &quot;${DimensionColumnName}&quot;==&quot;product&quot;)}</stringProp>
-                    <boolProp name="IfController.evaluateAll">false</boolProp>
-                    <boolProp name="IfController.useExpression">true</boolProp>
-                  </IfController>
-                  <hashTree>
-                    <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="DB Query to fetch &apos;${ProductColumnNameFilter}&apos; product_data" enabled="true">
-                      <stringProp name="dataSource">connection</stringProp>
-                      <stringProp name="query">WITH t AS (
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout"></stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as String</stringProp>
+                <stringProp name="resultSetMaxRows"></stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames">opstudy_id,sum_st_ty,sum_st_ly,opstudy_name,opstudy_description,opstudy_external_id,st_yoy_perc_change,totalCount</stringProp>
+                <stringProp name="TestPlan.comments">All variables passed to this query come from ${filePath}globalFilter.csv file. Changing variable in the file will change the value for ALL scripts that are using it.</stringProp>
+              </JDBCSampler>
+              <hashTree>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate data row count in the database" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="1890478328">${getProductrowCount}</stringProp>
+                  </collectionProp>
+                  <stringProp name="TestPlan.comments">validate if row count match in API response &amp; in the database</stringProp>
+                  <stringProp name="Assertion.custom_message">### Response data not match... ###</stringProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">8</intProp>
+                  <stringProp name="Assertion.scope">variable</stringProp>
+                  <stringProp name="Scope.variable">totalCount_#</stringProp>
+                </ResponseAssertion>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If cmpOperator &quot;IN&quot; &amp; DimensionColumnName &quot;product&quot;" enabled="true">
+              <stringProp name="IfController.condition">${__jexl3(&quot;${CmpOperator}&quot;==&quot;IN&quot; &amp;&amp; &quot;${DimensionColumnName}&quot;==&quot;product&quot;)}</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+              <boolProp name="IfController.useExpression">true</boolProp>
+            </IfController>
+            <hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="DB Query to fetch &apos;${ProductColumnNameFilter}&apos; product_data" enabled="true">
+                <stringProp name="dataSource">connection</stringProp>
+                <stringProp name="query">WITH t AS (
 SELECT
 	pdx.opstudy_id AS opstudy_id,
 	SUM(st_ty) AS sum_st_ty,
@@ -2826,41 +2835,41 @@ GROUP BY
 	count_of_overrides
 ORDER BY
 	opstudy_id</stringProp>
-                      <stringProp name="queryArguments"></stringProp>
-                      <stringProp name="queryArgumentsTypes"></stringProp>
-                      <stringProp name="queryTimeout"></stringProp>
-                      <stringProp name="queryType">Select Statement</stringProp>
-                      <stringProp name="resultSetHandler">Store as String</stringProp>
-                      <stringProp name="resultSetMaxRows"></stringProp>
-                      <stringProp name="resultVariable"></stringProp>
-                      <stringProp name="variableNames">opstudy_id,sum_st_ty,sum_st_ly,opstudy_name,opstudy_description,opstudy_external_id,st_yoy_perc_change,totalCount</stringProp>
-                      <stringProp name="TestPlan.comments">All variables passed to this query come from ${filePath}globalFilter.csv file. Changing variable in the file will change the value for ALL scripts that are using it.</stringProp>
-                    </JDBCSampler>
-                    <hashTree>
-                      <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate data row count in the database" enabled="true">
-                        <collectionProp name="Asserion.test_strings">
-                          <stringProp name="1890478328">${getProductrowCount}</stringProp>
-                        </collectionProp>
-                        <stringProp name="TestPlan.comments">validate if row count match in API response &amp; in the database</stringProp>
-                        <stringProp name="Assertion.custom_message">### Response data not match... ###</stringProp>
-                        <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                        <boolProp name="Assertion.assume_success">false</boolProp>
-                        <intProp name="Assertion.test_type">8</intProp>
-                        <stringProp name="Assertion.scope">variable</stringProp>
-                        <stringProp name="Scope.variable">totalCount_#</stringProp>
-                      </ResponseAssertion>
-                      <hashTree/>
-                    </hashTree>
-                  </hashTree>
-                  <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If cmpOperator &quot;NOT IN&quot; &amp; DimensionColumnName &quot;location&quot;" enabled="true">
-                    <stringProp name="IfController.condition">${__jexl3(&quot;${CmpOperator}&quot;==&quot;NOT_IN&quot; &amp;&amp; &quot;${DimensionColumnName}&quot;==&quot;location&quot;)}</stringProp>
-                    <boolProp name="IfController.evaluateAll">false</boolProp>
-                    <boolProp name="IfController.useExpression">true</boolProp>
-                  </IfController>
-                  <hashTree>
-                    <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="DB Query to fetch  &apos;${ProductColumnNameFilter}&apos; product_data" enabled="true">
-                      <stringProp name="dataSource">connection</stringProp>
-                      <stringProp name="query">WITH t AS (
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout"></stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as String</stringProp>
+                <stringProp name="resultSetMaxRows"></stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames">opstudy_id,sum_st_ty,sum_st_ly,opstudy_name,opstudy_description,opstudy_external_id,st_yoy_perc_change,totalCount</stringProp>
+                <stringProp name="TestPlan.comments">All variables passed to this query come from ${filePath}globalFilter.csv file. Changing variable in the file will change the value for ALL scripts that are using it.</stringProp>
+              </JDBCSampler>
+              <hashTree>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate data row count in the database" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="1890478328">${getProductrowCount}</stringProp>
+                  </collectionProp>
+                  <stringProp name="TestPlan.comments">validate if row count match in API response &amp; in the database</stringProp>
+                  <stringProp name="Assertion.custom_message">### Response data not match... ###</stringProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">8</intProp>
+                  <stringProp name="Assertion.scope">variable</stringProp>
+                  <stringProp name="Scope.variable">totalCount_#</stringProp>
+                </ResponseAssertion>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If cmpOperator &quot;NOT IN&quot; &amp; DimensionColumnName &quot;location&quot;" enabled="true">
+              <stringProp name="IfController.condition">${__jexl3(&quot;${CmpOperator}&quot;==&quot;NOT_IN&quot; &amp;&amp; &quot;${DimensionColumnName}&quot;==&quot;location&quot;)}</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+              <boolProp name="IfController.useExpression">true</boolProp>
+            </IfController>
+            <hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="DB Query to fetch  &apos;${ProductColumnNameFilter}&apos; product_data" enabled="true">
+                <stringProp name="dataSource">connection</stringProp>
+                <stringProp name="query">WITH t AS (
 SELECT
 	pdx.opstudy_id AS opstudy_id,
 	SUM(st_ty) AS sum_st_ty,
@@ -2918,41 +2927,41 @@ GROUP BY
 	count_of_overrides
 ORDER BY
 	opstudy_id</stringProp>
-                      <stringProp name="queryArguments"></stringProp>
-                      <stringProp name="queryArgumentsTypes"></stringProp>
-                      <stringProp name="queryTimeout"></stringProp>
-                      <stringProp name="queryType">Select Statement</stringProp>
-                      <stringProp name="resultSetHandler">Store as String</stringProp>
-                      <stringProp name="resultSetMaxRows"></stringProp>
-                      <stringProp name="resultVariable"></stringProp>
-                      <stringProp name="variableNames">opstudy_id,sum_st_ty,sum_st_ly,opstudy_name,opstudy_description,opstudy_external_id,st_yoy_perc_change,totalCount</stringProp>
-                      <stringProp name="TestPlan.comments">All variables passed to this query come from ${filePath}globalFilter.csv file. Changing variable in the file will change the value for ALL scripts that &apos;${ProductColumnNameFilter}&apos; are using it.</stringProp>
-                    </JDBCSampler>
-                    <hashTree>
-                      <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate data row count in the database" enabled="true">
-                        <collectionProp name="Asserion.test_strings">
-                          <stringProp name="1890478328">${getProductrowCount}</stringProp>
-                        </collectionProp>
-                        <stringProp name="TestPlan.comments">validate if row count match in API response &amp; in the database</stringProp>
-                        <stringProp name="Assertion.custom_message">### Response data not match... ###</stringProp>
-                        <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                        <boolProp name="Assertion.assume_success">false</boolProp>
-                        <intProp name="Assertion.test_type">8</intProp>
-                        <stringProp name="Assertion.scope">variable</stringProp>
-                        <stringProp name="Scope.variable">totalCount_#</stringProp>
-                      </ResponseAssertion>
-                      <hashTree/>
-                    </hashTree>
-                  </hashTree>
-                  <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If cmpOperator &quot;IN&quot; &amp; DimensionColumnName &quot;location&quot;" enabled="true">
-                    <stringProp name="IfController.condition">${__jexl3(&quot;${CmpOperator}&quot;==&quot;IN&quot; &amp;&amp; &quot;${DimensionColumnName}&quot;==&quot;location&quot;)}</stringProp>
-                    <boolProp name="IfController.evaluateAll">false</boolProp>
-                    <boolProp name="IfController.useExpression">true</boolProp>
-                  </IfController>
-                  <hashTree>
-                    <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="DB Query to fetch  &apos;${ProductColumnNameFilter}&apos; product_data" enabled="true">
-                      <stringProp name="dataSource">connection</stringProp>
-                      <stringProp name="query">WITH t AS (
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout"></stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as String</stringProp>
+                <stringProp name="resultSetMaxRows"></stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames">opstudy_id,sum_st_ty,sum_st_ly,opstudy_name,opstudy_description,opstudy_external_id,st_yoy_perc_change,totalCount</stringProp>
+                <stringProp name="TestPlan.comments">All variables passed to this query come from ${filePath}globalFilter.csv file. Changing variable in the file will change the value for ALL scripts that &apos;${ProductColumnNameFilter}&apos; are using it.</stringProp>
+              </JDBCSampler>
+              <hashTree>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate data row count in the database" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="1890478328">${getProductrowCount}</stringProp>
+                  </collectionProp>
+                  <stringProp name="TestPlan.comments">validate if row count match in API response &amp; in the database</stringProp>
+                  <stringProp name="Assertion.custom_message">### Response data not match... ###</stringProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">8</intProp>
+                  <stringProp name="Assertion.scope">variable</stringProp>
+                  <stringProp name="Scope.variable">totalCount_#</stringProp>
+                </ResponseAssertion>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If cmpOperator &quot;IN&quot; &amp; DimensionColumnName &quot;location&quot;" enabled="true">
+              <stringProp name="IfController.condition">${__jexl3(&quot;${CmpOperator}&quot;==&quot;IN&quot; &amp;&amp; &quot;${DimensionColumnName}&quot;==&quot;location&quot;)}</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+              <boolProp name="IfController.useExpression">true</boolProp>
+            </IfController>
+            <hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="DB Query to fetch  &apos;${ProductColumnNameFilter}&apos; product_data" enabled="true">
+                <stringProp name="dataSource">connection</stringProp>
+                <stringProp name="query">WITH t AS (
 SELECT
 	pdx.opstudy_id AS opstudy_id,
 	SUM(st_ty) AS sum_st_ty,
@@ -3010,43 +3019,34 @@ GROUP BY
 	count_of_overrides
 ORDER BY
 	opstudy_id</stringProp>
-                      <stringProp name="queryArguments"></stringProp>
-                      <stringProp name="queryArgumentsTypes"></stringProp>
-                      <stringProp name="queryTimeout"></stringProp>
-                      <stringProp name="queryType">Select Statement</stringProp>
-                      <stringProp name="resultSetHandler">Store as String</stringProp>
-                      <stringProp name="resultSetMaxRows"></stringProp>
-                      <stringProp name="resultVariable"></stringProp>
-                      <stringProp name="variableNames">opstudy_id,sum_st_ty,sum_st_ly,opstudy_name,opstudy_description,opstudy_external_id,st_yoy_perc_change,totalCount</stringProp>
-                      <stringProp name="TestPlan.comments">All variables passed to this query come from ${filePath}globalFilter.csv file. Changing variable in the file will change the value for ALL scripts that are using it.</stringProp>
-                    </JDBCSampler>
-                    <hashTree>
-                      <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate data row count in the database" enabled="true">
-                        <collectionProp name="Asserion.test_strings">
-                          <stringProp name="1890478328">${getProductrowCount}</stringProp>
-                        </collectionProp>
-                        <stringProp name="TestPlan.comments">validate if row count match in API response &amp; in the database</stringProp>
-                        <stringProp name="Assertion.custom_message">### Response data not match... ###</stringProp>
-                        <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                        <boolProp name="Assertion.assume_success">false</boolProp>
-                        <intProp name="Assertion.test_type">8</intProp>
-                        <stringProp name="Assertion.scope">variable</stringProp>
-                        <stringProp name="Scope.variable">totalCount_#</stringProp>
-                      </ResponseAssertion>
-                      <hashTree/>
-                    </hashTree>
-                  </hashTree>
-                </hashTree>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout"></stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as String</stringProp>
+                <stringProp name="resultSetMaxRows"></stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames">opstudy_id,sum_st_ty,sum_st_ly,opstudy_name,opstudy_description,opstudy_external_id,st_yoy_perc_change,totalCount</stringProp>
+                <stringProp name="TestPlan.comments">All variables passed to this query come from ${filePath}globalFilter.csv file. Changing variable in the file will change the value for ALL scripts that are using it.</stringProp>
+              </JDBCSampler>
+              <hashTree>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate data row count in the database" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="1890478328">${getProductrowCount}</stringProp>
+                  </collectionProp>
+                  <stringProp name="TestPlan.comments">validate if row count match in API response &amp; in the database</stringProp>
+                  <stringProp name="Assertion.custom_message">### Response data not match... ###</stringProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">8</intProp>
+                  <stringProp name="Assertion.scope">variable</stringProp>
+                  <stringProp name="Scope.variable">totalCount_#</stringProp>
+                </ResponseAssertion>
+                <hashTree/>
               </hashTree>
             </hashTree>
           </hashTree>
         </hashTree>
-        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
-          <boolProp name="displayJMeterProperties">false</boolProp>
-          <boolProp name="displayJMeterVariables">true</boolProp>
-          <boolProp name="displaySystemProperties">false</boolProp>
-        </DebugSampler>
-        <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
@@ -3156,7 +3156,7 @@ ORDER BY
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">C:\Users\ap1956\Downloads\jmeter-results (17)\result.jtl</stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer" enabled="true">
@@ -3199,7 +3199,7 @@ ORDER BY
           <stringProp name="filename">${filePath}api_results\DP_Consolidated_report.csv</stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="GitHub View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -3233,8 +3233,91 @@ ORDER BY
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">C:\Users\ap1956\Downloads\jmeter-results (24)\result.jtl</stringProp>
         </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Git hub Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename">C:\Users\ap1956\Downloads\jmeter-results (24)\result.jtl</stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Github_Actions_Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename">C:\Users\ap1956\Downloads\jmeter-results (21)\result.jtl</stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc - WebDriver Sampler" enabled="true">
+          <stringProp name="WebDriverSampler.script">WDS.sampleResult.sampleStart()
+WDS.browser.get(&apos;http://jmeter-plugins.org&apos;)
+WDS.sampleResult.sampleEnd()
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">javascript</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
         <hashTree/>
       </hashTree>
     </hashTree>
