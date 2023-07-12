@@ -52,7 +52,7 @@
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">15</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">40</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -178,7 +178,7 @@
           <hashTree>
             <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Complex Filters" enabled="true">
               <boolProp name="LoopController.continue_forever">true</boolProp>
-              <stringProp name="LoopController.loops">2</stringProp>
+              <stringProp name="LoopController.loops">4</stringProp>
             </LoopController>
             <hashTree>
               <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="ComplexFilter.cfg Config" enabled="true">
@@ -1318,7 +1318,7 @@
             <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller with Filters Applied" enabled="true">
               <boolProp name="LoopController.continue_forever">true</boolProp>
               <stringProp name="TestPlan.comments">Loop, for diffrent diemension levels &amp; deffrent permitation &amp; combination</stringProp>
-              <stringProp name="LoopController.loops">1</stringProp>
+              <stringProp name="LoopController.loops">2</stringProp>
             </LoopController>
             <hashTree>
               <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="FVAFilters.csv Config" enabled="true">
